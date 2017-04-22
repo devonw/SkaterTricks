@@ -4,7 +4,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value:''
+      value:'',
+      score: 0,
+      randomNum: Math.floor(Math.random() * this.props.pics.length)
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,17 +18,14 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
-    // alert('A name was submitted: ' + this.props.addsomeshit(Number(this.state.value)));
     
-    // this.props.pics.push({Url: this.state.value})
-    // alert(this.props.pics.length);
-    // event.preventDefault();
-    if(this.state.value === this.props.pics[0].trick){
-      alert('you got it bro');
+    if(this.state.value === this.props.pics[this.state.randomNum].trick){
+      alert('you got it skaterboi/woman');
+      this.setState({randomNum: Math.floor(Math.random() * this.props.pics.length), value: '', score: this.state.score + 1})
     } else {
-      alert('not the correct trick');
+      alert('not the correct trick' + this.state.randomNum);
     }
-    // alert(this.props.pics[0].trick);
+    
     event.preventDefault();
   }
 
@@ -36,7 +35,8 @@ class App extends React.Component {
         
         <form onSubmit={this.handleSubmit}>
           <label>
-             What trick do you think this is?
+             What trick do you think this is Sk8er Boi/Gurl?
+             <div>Your answer:</div>
             <input
               className="formy"
               type="text"
@@ -45,7 +45,8 @@ class App extends React.Component {
             />
           </label>
         <input type="submit" value="Submit" />
-        <img className="pic" src={this.props.pics[0].Url} />
+        <div> Score: {this.state.score} </div>
+        <img className="pic" src={this.props.pics[this.state.randomNum].Url}  />
         </form>
       
     )
