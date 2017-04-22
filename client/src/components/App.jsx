@@ -10,6 +10,7 @@ class App extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  
   }
 
   handleChange(event) {
@@ -23,20 +24,26 @@ class App extends React.Component {
       alert('you got it skaterboi/woman');
       this.setState({randomNum: Math.floor(Math.random() * this.props.pics.length), value: '', score: this.state.score + 1})
     } else {
-      alert('not the correct trick' + this.state.randomNum);
+      alert('not the correct trick');
     }
     
     event.preventDefault();
   }
 
+  
+
   render() {
+    var style = {
+      width: 700,
+      height: 500
+    };
     return (
       
         
         <form onSubmit={this.handleSubmit}>
           <label>
-             What trick do you think this is Sk8er Boi/Gurl?
-             <div>Your answer:</div>
+             <h1>What trick do you think this is Sk8er Boi/Gurl?</h1>
+             <h2>Your answer:</h2>
             <input
               className="formy"
               type="text"
@@ -46,7 +53,7 @@ class App extends React.Component {
           </label>
         <input type="submit" value="Submit" />
         <div> Score: {this.state.score} </div>
-        <img className="pic" src={this.props.pics[this.state.randomNum].Url}  />
+        <img className="pic" src={this.props.pics[this.state.randomNum].Url} style={style}/>
         </form>
       
     )

@@ -32,5 +32,8 @@ var sampleData = [
 
 ]
 
-ReactDOM.render(<App addsomeshit={add} pics={sampleData}/>, document.getElementById('app'))
+
+
+
+ReactDOM.render(<App addsomeshit={add} pics={sampleData} />, document.getElementById('app'))
 

@@ -9549,6 +9549,7 @@ var App = function (_React$Component) {
     };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+
     return _this;
   }
 
@@ -9566,7 +9567,7 @@ var App = function (_React$Component) {
         alert('you got it skaterboi/woman');
         this.setState({ randomNum: Math.floor(Math.random() * this.props.pics.length), value: '', score: this.state.score + 1 });
       } else {
-        alert('not the correct trick' + this.state.randomNum);
+        alert('not the correct trick');
       }
 
       event.preventDefault();
@@ -9574,15 +9575,23 @@ var App = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var style = {
+        width: 700,
+        height: 500
+      };
       return _react2.default.createElement(
         'form',
         { onSubmit: this.handleSubmit },
         _react2.default.createElement(
           'label',
           null,
-          'What trick do you think this is Sk8er Boi/Gurl?',
           _react2.default.createElement(
-            'div',
+            'h1',
+            null,
+            'What trick do you think this is Sk8er Boi/Gurl?'
+          ),
+          _react2.default.createElement(
+            'h2',
             null,
             'Your answer:'
           ),
@@ -9601,7 +9610,7 @@ var App = function (_React$Component) {
           this.state.score,
           ' '
         ),
-        _react2.default.createElement('img', { className: 'pic', src: this.props.pics[this.state.randomNum].Url })
+        _react2.default.createElement('img', { className: 'pic', src: this.props.pics[this.state.randomNum].Url, style: style })
       );
     }
   }]);
