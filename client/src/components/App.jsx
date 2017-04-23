@@ -24,6 +24,7 @@ class App extends React.Component {
       alert('you got it skaterboi/woman');
       this.setState({randomNum: Math.floor(Math.random() * this.props.pics.length), value: '', score: this.state.score + 1})
     } else {
+      this.props.getData();
       alert('not the correct trick');
     }
     

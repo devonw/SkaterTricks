@@ -7,6 +7,12 @@ var add = function(number){
   return number + 45;
 }
 
+var getPics = function(){
+  $.get('http://localhost:1337/skaters', function(data){
+    console.log(data);
+  })
+}
+
 var sampleData = [
   {
     Url: 'http://img.wennermedia.com/social/dylan-rieder-skateboarder-dead-92ddb4b8-b1bb-4099-878e-2517a2cc4951.jpg',
@@ -35,5 +41,5 @@ var sampleData = [
 
 
 
-ReactDOM.render(<App addsomeshit={add} pics={sampleData} />, document.getElementById('app'))
+ReactDOM.render(<App addsomeshit={add} pics={sampleData} getData={getPics} />, document.getElementById('app'))
 
