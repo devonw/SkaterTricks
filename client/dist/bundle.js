@@ -9565,12 +9565,13 @@ var App = function (_React$Component) {
     value: function handleSubmit(event) {
       this.state.usedSkaters[this.props.pics[this.state.randomNum].skater] = true;
       if (Object.keys(this.state.usedSkaters).length === this.props.pics.length - 1) {
-        this.setState({ score: 0 }, function () {
-          alert('game over. no more skater boys to show');
+        window.location.reload();
+        // this.setState({score: 0}, function(){
+        alert('game over. no more skaters to show');
 
-          this.setState({ usedSkaters: {} });
-          console.log(this.state.score);
-        });
+        // this.setState({usedSkaters: {}})
+        console.log(this.state.score);
+        // });
       } else {
         var randomNum = Math.floor(Math.random() * this.props.pics.length);
         while (this.state.usedSkaters[this.props.pics[randomNum].skater]) {
@@ -9587,6 +9588,8 @@ var App = function (_React$Component) {
       } else {
         this.props.getData();
         alert('not the correct trick');
+        // this.state.usedSkaters[this.props.pics[this.state.randomNum].skater] = true;
+        // this.setState({randomNum: randomNum || 0})
       }
 
       event.preventDefault();
