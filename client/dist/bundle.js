@@ -9545,7 +9545,8 @@ var App = function (_React$Component) {
     _this.state = {
       value: '',
       score: 0,
-      randomNum: Math.floor(Math.random() * _this.props.pics.length)
+      randomNum: Math.floor(Math.random() * _this.props.pics.length),
+      usedSkaters: {}
     };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
@@ -9562,10 +9563,27 @@ var App = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
+      this.state.usedSkaters[this.props.pics[this.state.randomNum].skater] = true;
+      if (Object.keys(this.state.usedSkaters).length === this.props.pics.length - 1) {
+        this.setState({ score: 0 }, function () {
+          alert('game over. no more skater boys to show');
+
+          this.setState({ usedSkaters: {} });
+          console.log(this.state.score);
+        });
+      } else {
+        var randomNum = Math.floor(Math.random() * this.props.pics.length);
+        while (this.state.usedSkaters[this.props.pics[randomNum].skater]) {
+          randomNum = Math.floor(Math.random() * this.props.pics.length);
+        }
+      }
+      // this.state.usedSkaters[this.props.pics[this.state.randomNum].skater] = true;
+
 
       if (this.state.value === this.props.pics[this.state.randomNum].trick) {
-        alert('you got it skaterboi/woman' + this.props.pics.length);
-        this.setState({ randomNum: Math.floor(Math.random() * this.props.pics.length), value: '', score: this.state.score + 1 });
+        alert('you got it skaterboi/woman');
+        console.log(Object.keys(this.state.usedSkaters).length);
+        this.setState({ randomNum: randomNum || 0, value: '', score: this.state.score + 1 });
       } else {
         this.props.getData();
         alert('not the correct trick');
