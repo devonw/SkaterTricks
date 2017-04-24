@@ -39,16 +39,16 @@ var Skater = mongoose.model('Skater', skaterSchema);
 
 db.once('open', function(){
     
-    sampleData.forEach((skater) => {
+    // sampleData.forEach((skater) => {
       
-      new Skater({
-          Url: skater.Url,
-          trick: skater.trick,
-          skater: skater.skater
-      }).save(function(err, nick){
-        if (err) return console.error(err);
-      });
-    })
+    //   new Skater({
+    //       Url: skater.Url,
+    //       trick: skater.trick,
+    //       skater: skater.skater
+    //   }).save(function(err, nick){
+    //     if (err) return console.error(err);
+    //   });
+    // })
 //    db.close(); 
 })
 

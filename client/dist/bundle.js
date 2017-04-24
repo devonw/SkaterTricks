@@ -9581,37 +9581,61 @@ var App = function (_React$Component) {
         height: 500
       };
       return _react2.default.createElement(
-        'form',
-        { onSubmit: this.handleSubmit },
+        'div',
+        null,
         _react2.default.createElement(
-          'label',
-          null,
+          'form',
+          { onSubmit: this.handleSubmit },
           _react2.default.createElement(
-            'h1',
+            'label',
             null,
-            'What trick do you think this is Sk8er Boi/Gurl?'
+            _react2.default.createElement(
+              'h1',
+              null,
+              'What trick do you think this is Sk8er Boi/Gurl?'
+            ),
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Your answer:'
+            ),
+            _react2.default.createElement('input', {
+              className: 'formy',
+              type: 'text',
+              value: this.state.value,
+              onChange: this.handleChange
+            })
           ),
+          _react2.default.createElement('input', { type: 'submit', value: 'Submit' }),
           _react2.default.createElement(
-            'h2',
+            'p',
             null,
-            'Your answer:'
+            ' Score: ',
+            this.state.score,
+            ' '
           ),
-          _react2.default.createElement('input', {
-            className: 'formy',
-            type: 'text',
-            value: this.state.value,
-            onChange: this.handleChange
-          })
+          _react2.default.createElement('img', { className: 'pic', src: this.props.pics[this.state.randomNum].Url, style: style })
         ),
-        _react2.default.createElement('input', { type: 'submit', value: 'Submit' }),
         _react2.default.createElement(
           'div',
           null,
-          ' Score: ',
-          this.state.score,
-          ' '
-        ),
-        _react2.default.createElement('img', { className: 'pic', src: this.props.pics[this.state.randomNum].Url, style: style })
+          _react2.default.createElement(
+            'form',
+            { action: '/skaters', method: 'POST' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Submit a trick of your own'
+            ),
+            'Url:',
+            _react2.default.createElement('input', { type: 'text', name: 'Url' }),
+            'Trick:',
+            _react2.default.createElement('input', { type: 'text', name: 'trick' }),
+            'Skater:',
+            _react2.default.createElement('input', { type: 'text', name: 'Skater' }),
+            _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
+          )
+        )
       );
     }
   }]);
@@ -9652,26 +9676,10 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var add = function add(number) {
-  return number + 45;
-};
-
 var sampleData = [{
-  Url: 'http://img.wennermedia.com/social/dylan-rieder-skateboarder-dead-92ddb4b8-b1bb-4099-878e-2517a2cc4951.jpg',
-  trick: 'Backside Smith Grind',
-  skater: 'Dylan Reider'
-}, {
   Url: 'http://a.espncdn.com/photo/2012/0214/as_skate_willner1_576.jpg',
   trick: '360 Flip',
   skater: 'Kenny Reed'
-}, {
-  Url: 'https://thirty30sprint.files.wordpress.com/2012/11/collin-provost.jpg',
-  trick: 'Tucknee',
-  skater: 'Collin Provost'
-}, {
-  Url: 'http://a.espncdn.com/photo/2012/0922/as_skate_Trapasso2_576.jpg',
-  trick: 'Switch Kickflip',
-  skater: 'Nick Trapasso'
 }];
 
 var getPics = function getPics() {
@@ -9683,8 +9691,9 @@ var getPics = function getPics() {
 };
 
 getPics();
+console.log(sampleData);
 
-_reactDom2.default.render(_react2.default.createElement(_App2.default, { addsomeshit: add, pics: sampleData, getData: getPics }), document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, { pics: sampleData, getData: getPics }), document.getElementById('app'));
 
 /***/ }),
 /* 84 */

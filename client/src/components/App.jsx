@@ -40,7 +40,7 @@ class App extends React.Component {
     };
     return (
       
-        
+        <div>
         <form onSubmit={this.handleSubmit}>
           <label>
              <h1>What trick do you think this is Sk8er Boi/Gurl?</h1>
@@ -53,9 +53,27 @@ class App extends React.Component {
             />
           </label>
         <input type="submit" value="Submit" />
-        <div> Score: {this.state.score} </div>
+        
+        
+        <p> Score: {this.state.score} </p>
         <img className="pic" src={this.props.pics[this.state.randomNum].Url} style={style}/>
         </form>
+        <div>
+        <form action="/skaters" method="POST">
+        
+          <h2>Submit a trick of your own</h2>
+          Url:
+          <input type="text" name="Url"/>
+          Trick:
+          <input type="text" name="trick"/>
+          Skater:
+          <input type="text" name="Skater"/>
+          <input type="submit" value="Submit"/>
+        </form>
+        </div>
+         
+        </div>
+        
       
     )
   }
