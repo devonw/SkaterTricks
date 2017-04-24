@@ -9587,9 +9587,10 @@ var App = function (_React$Component) {
         this.setState({ randomNum: randomNum || 0, value: '', score: this.state.score + 1 });
       } else {
         this.props.getData();
-        alert('not the correct trick');
+        alert('not the correct trick. please enter' + this.props.pics[this.state.randomNum].trick);
         // this.state.usedSkaters[this.props.pics[this.state.randomNum].skater] = true;
         // this.setState({randomNum: randomNum || 0})
+        this.setState({ value: '', score: this.state.score - 1 });
       }
 
       event.preventDefault();
@@ -9614,6 +9615,11 @@ var App = function (_React$Component) {
               'h1',
               null,
               'What trick do you think this is Sk8er Boi/Gurl?'
+            ),
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Or... Just name the skater'
             ),
             _react2.default.createElement(
               'h2',

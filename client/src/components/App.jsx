@@ -45,9 +45,10 @@ class App extends React.Component {
       this.setState({randomNum: randomNum || 0, value: '', score: this.state.score + 1})
     } else {
       this.props.getData();
-      alert('not the correct trick');
+      alert('not the correct trick. please enter' + this.props.pics[this.state.randomNum].trick);
       // this.state.usedSkaters[this.props.pics[this.state.randomNum].skater] = true;
       // this.setState({randomNum: randomNum || 0})
+      this.setState({value: '', score: this.state.score - 1})
     }
     
     event.preventDefault();
@@ -66,6 +67,7 @@ class App extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
              <h1>What trick do you think this is Sk8er Boi/Gurl?</h1>
+             <h2>Or... Just name the skater</h2>
              <h2>Your answer:</h2>
             <input
               className="formy"
