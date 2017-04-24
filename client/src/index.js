@@ -7,11 +7,7 @@ var add = function(number){
   return number + 45;
 }
 
-var getPics = function(){
-  $.get('http://localhost:1337/skaters', function(data){
-    console.log(data);
-  })
-}
+
 
 var sampleData = [
   {
@@ -36,7 +32,18 @@ var sampleData = [
     skater: 'Nick Trapasso'
 }
 
+
 ]
+
+var getPics = function(){
+  $.get('http://localhost:1337/skaters', function(data){
+    data.forEach(function(item){
+      sampleData.push(item);
+    })
+  })
+}
+
+getPics();
 
 
 

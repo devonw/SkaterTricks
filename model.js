@@ -49,7 +49,7 @@ db.once('open', function(){
         if (err) return console.error(err);
       });
     })
-    
+   db.close(); 
 })
 
 module.exports = Skater

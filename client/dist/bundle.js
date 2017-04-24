@@ -9564,7 +9564,7 @@ var App = function (_React$Component) {
     value: function handleSubmit(event) {
 
       if (this.state.value === this.props.pics[this.state.randomNum].trick) {
-        alert('you got it skaterboi/woman');
+        alert('you got it skaterboi/woman' + this.props.pics.length);
         this.setState({ randomNum: Math.floor(Math.random() * this.props.pics.length), value: '', score: this.state.score + 1 });
       } else {
         this.props.getData();
@@ -9656,12 +9656,6 @@ var add = function add(number) {
   return number + 45;
 };
 
-var getPics = function getPics() {
-  $.get('http://localhost:1337/skaters', function (data) {
-    console.log(data);
-  });
-};
-
 var sampleData = [{
   Url: 'http://img.wennermedia.com/social/dylan-rieder-skateboarder-dead-92ddb4b8-b1bb-4099-878e-2517a2cc4951.jpg',
   trick: 'Backside Smith Grind',
@@ -9679,6 +9673,16 @@ var sampleData = [{
   trick: 'Switch Kickflip',
   skater: 'Nick Trapasso'
 }];
+
+var getPics = function getPics() {
+  $.get('http://localhost:1337/skaters', function (data) {
+    data.forEach(function (item) {
+      sampleData.push(item);
+    });
+  });
+};
+
+getPics();
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, { addsomeshit: add, pics: sampleData, getData: getPics }), document.getElementById('app'));
 

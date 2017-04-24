@@ -21,7 +21,7 @@ class App extends React.Component {
   handleSubmit(event) {
     
     if(this.state.value === this.props.pics[this.state.randomNum].trick){
-      alert('you got it skaterboi/woman');
+      alert('you got it skaterboi/woman' + this.props.pics.length);
       this.setState({randomNum: Math.floor(Math.random() * this.props.pics.length), value: '', score: this.state.score + 1})
     } else {
       this.props.getData();
